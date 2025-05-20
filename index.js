@@ -1,6 +1,7 @@
 const express= require("express")
 const mongoose = require("mongoose")
 const Recipe = require("./recipe.js")
+const cors = require("cors");
 const { initializeDatabase } = require("./db/db.connect")
 
 const app = express()
@@ -178,7 +179,7 @@ async function deleteRecipeById(recipeId){
     }
 }
 
-app.delete("/Recipes/:recipeId", async (req, res) => {
+app.delete("/recipes/:recipeId", async (req, res) => {
     try{
         const deletedRecipe = await deleteRecipeById(req.params.recipeId)
         if(deletedRecipe){
